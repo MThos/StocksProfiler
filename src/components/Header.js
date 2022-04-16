@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
-const Header = (props) => {
-  let [active, setActive] = useState('');
+const Header = () => {
+  const [active, setActive] = useState('');
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter" && e.target.value.length > 0) {
@@ -25,7 +25,7 @@ const Header = (props) => {
       </div>
       <div>
         <form>
-          <input id="text-input" type="text" placeholder={props.placeholder} onKeyPress={e => handleKeyPress(e)} />
+          <input id="text-input" type="text" placeholder="SYMBOL" onKeyPress={e => handleKeyPress(e)} />
         </form>        
       </div>
     </header>

@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Navbar from './components/Navbar';
@@ -8,13 +9,24 @@ import Cookies from './components/Cookies';
 import Contact from './components/Contact';
 import Company from './components/Company';
 import Charts from './components/Charts';
+import StockTicker from './components/StockTicker';
 import NotFound from './components/NotFound';
 
 const App = () => {
+  const [active, setActive] = useState('AAPL');
+
+  useEffect(() => {
+    if (localStorage.getItem('active') === null) {
+      localStorage.setItem('active', active);
+      setActive(localStorage.getItem('active'));
+    };
+  });
+
   return (
     <div className="App">      
       <BrowserRouter>
-        <Header title="STOCKS·PROFILER" placeholder="SYMBOL" />
+        <Header />
+        <StockTicker />
         <Navbar />
         <Routes>
           <Route path="/" element={<section></section>} />
@@ -26,7 +38,7 @@ const App = () => {
           <Route path="contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-        <Footer active="" />
+        <Footer />
       </BrowserRouter>
     </div>
   );

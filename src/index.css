@@ -102,7 +102,7 @@ a {
 
 #company-description {
   font-size: 1.2rem;
-  padding: 0 60px;
+  padding: 30px 60px 10px 60px;
   text-align: left;
 }
 
@@ -130,7 +130,11 @@ a {
   width: 100px;
 }
 
-#company-middle {
+.company-large {
+  font-size: 1.5rem;
+}
+
+#company-basic-details {
   background: rgba(0, 0, 0, 0.9);
   border: 6px solid rgba(0, 0, 0, 0.3);
   border-radius: 10px;
@@ -142,14 +146,14 @@ a {
   width: fit-content;
 }
 
-#company-middle div {
+#company-basic-details div {
   padding: 5px;
 }
 
-#company-middle-across {
+#company-middle-flex {
   display: flex;
   flex-direction: row;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
   gap: 50px;
   margin: 30px auto;
@@ -159,7 +163,7 @@ a {
 #company-money-details {
   display: flex;
   flex-direction: row;
-  font-size: 1.3rem;
+  font-size: 1rem;
   font-weight: 600;
   gap: 50px;
   margin: 30px auto;
@@ -182,6 +186,7 @@ a {
 #company-symbol {
   color: black;
   font-size: 2.5rem;
+  font-weight: 600;
   padding: 0 0 10px 0;
   text-align: center;
 }
@@ -299,7 +304,6 @@ footer {
   background: rgba(200, 200, 200, 0.1);
   border-top: 8px solid rgba(0, 0, 0, 0.1);
   flex-shrink: 0;
-  margin-top: 40px;
   padding: 10px 0;
 }
 
@@ -324,6 +328,10 @@ footer ul {
   justify-content: space-evenly;
   list-style-type: none;
   padding-left: 0;
+}
+
+.green {
+  color: mediumseagreen !important;
 }
 
 header {
@@ -396,9 +404,9 @@ header {
 #navbar {
   background: rgba(200, 200, 200, 0.2);
   border-bottom: 8px solid rgba(0, 0, 0, 0.1);
+  border-top: 8px solid rgba(0, 0, 0, 0.1);
   font-size: 1.1rem;
   font-weight: 600;
-  margin-bottom: 10px;
   padding: 5px 10px;
 }
 
@@ -442,8 +450,33 @@ header {
   text-align: center;
 }
 
+#not-found {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+#not-found-description {
+  color: black;
+  font-size: 1.7rem;
+  margin: 50px auto 0 auto;
+  padding: 20px;
+}
+
+#not-found-title {
+  color: red;
+  font-size: 10rem;
+  font-weight: 600;
+  margin: 30px auto 0 auto;
+  padding-right: 40px;
+}
+
+.red {
+  color: red !important;
+}
+
 section {
   flex: 1 0 auto;
+  padding: 10px 0 20px 0;
 }
 
 .text-right {
@@ -466,6 +499,26 @@ section {
   background: rgb(255, 208, 0);
   border: 2px solid gold;
   color: black;
+}
+
+#ticker {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px 0 10px 80px;
+}
+
+.ticker-percent {
+  font-weight: 600;
+}
+
+.ticker-plus-minus {
+  font-weight: 600;
+  padding-left: 5px;
+}
+
+.ticker-symbol {
+  display: inline;
+  font-size: 1.2rem;
+  padding: 0 15px;
 }
 
 .underline {
