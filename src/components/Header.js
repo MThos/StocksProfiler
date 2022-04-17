@@ -16,16 +16,20 @@ const Header = () => {
     setActive(localStorage.getItem('active'));
   });  
 
-  let symbol = (active) ? active : "STOCKS·PROFILER";
+  let symbol = (active) ? active : "";
+  let title = "STOCKS·PROFILE";
 
   return(
     <header>
-      <div className="main-title">
+      <div id="header-symbol">
         {symbol}
       </div>
-      <div>
+      <div id="header-title">
+        {title}
+      </div>
+      <div id="header-text-input">
         <form>
-          <input id="text-input" type="text" placeholder="SYMBOL" onKeyPress={e => handleKeyPress(e)} />
+          <input type="text" placeholder="SYMBOL" onKeyPress={e => handleKeyPress(e)} />
         </form>        
       </div>
     </header>
