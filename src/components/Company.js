@@ -40,24 +40,30 @@ const Company = () => {
         </div>
         <div id="company-money-details">
           <div>
-            PRICE<span className="company-green">${NumberConverter(stockData['price'], 2)}</span>
+            <span>PRICE</span>
+            <span className="company-green">${NumberConverter(stockData['price'], 2)}</span>
           </div>
           <div>
-            MARKET CAP<span className="company-green">${NumberConverter(stockData['mktCap'], 2)}</span>
+            <span>MARKET CAP</span>
+            <span className="company-green">${NumberConverter(stockData['mktCap'], 2)}</span>
           </div>
           <div>
-            VOLUME AVG<span className="company-green">{NumberConverter(stockData['volAvg'], 1)}</span>
+            <span>VOLUME</span>
+            <span className="company-green">{NumberConverter(stockData['volAvg'], 1)}</span>
           </div>
         </div>
         <div id="company-middle-flex">
           <div>
-            IPO<span className="company-large">{stockData['ipoDate']}</span>
+            <span>IPO</span>
+            <span className="company-large">{stockData['ipoDate']}</span>
           </div>
           <div>
-            CEO<span className="company-large">{stockData['ceo']}</span>
+            <span>CEO</span>
+            <span className="company-large">{stockData['ceo']}</span>
           </div>
           <div>
-            EMPLOYEES<span className="company-large">{NumberConverter(stockData['fullTimeEmployees'], 0)}</span>
+            <span>EMPLOYEES</span>
+            <span className="company-large">{NumberConverter(stockData['fullTimeEmployees'], 0)}</span>
           </div>
         </div>
         <div id="company-description">{stockData['description']}</div>

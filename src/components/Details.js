@@ -202,28 +202,82 @@ const Details = () => {
         </div>
         <div id="details-middle-flex">
           <div id="details-flex-left">
-            <div>CIK<span className="details-large">{parseInt(stockData['cik'], 10)}</span></div>
-            <div>COUNTRY<span className="details-large">{stockData['country']}</span></div>
-            <div>CURRENCY<span className="details-large">{stockData['currency']}</span></div>
-            <div>EXCHANGE<span className="details-large">{stockData['exchangeShortName']}</span></div>
-            <div>SHARES<span className="details-large">{NumberConverter(stockData['sharesOutstanding'], 1)}</span></div>
-            <div>FISCAL END<span className="details-large">{stockData['date']}</span></div>
+            <div>
+              <span>CIK</span>
+              <span className="details-large">{parseInt(stockData['cik'], 10)}</span>
+            </div>
+            <div>
+              <span>COUNTRY</span>
+              <span className="details-large">{stockData['country']}</span>
+            </div>
+            <div>
+              <span>CURRENCY</span>
+              <span className="details-large">{stockData['currency']}</span>
+            </div>
+            <div>
+              <span>EXCHANGE</span>
+              <span className="details-large">{stockData['exchangeShortName']}</span>
+            </div>
+            <div>
+              <span>SHARES</span>
+              <span className="details-large">{NumberConverter(stockData['sharesOutstanding'], 1)}</span>
+            </div>
+            <div>
+              <span>FISCAL END</span>
+              <span className="details-large">{stockData['date']}</span>
+            </div>
           </div>
           <div id="details-flex-mid">
-            <div>EPS<span className="details-large">{NumberConverter(stockData['eps'], 2)}</span></div>
-            <div>REVENUE<span className="details-large">{NumberConverter(stockData['sharesOutstanding'] * stockData['revenuePerShare'], 1)}</span></div>
-            <div>EBITDA<span className="details-large">{NumberConverter(stockData['ebitda'], 2)}</span></div>
-            <div>NET INCOME<span className="details-large">{NumberConverter(stockData['sharesOutstanding'] * stockData['netIncomePerShare'], 1)}</span></div>
-            <div>CASH<span className="details-large">{NumberConverter(stockData['sharesOutstanding'] * stockData['cashPerShare'], 1)}</span></div>
-            <div>PRICE TO SALES<span className="details-large">{NumberConverter(stockData['priceToSalesRatio'], 2)}</span></div>
+            <div>
+              <span>EPS</span>
+              <span className="details-large">{NumberConverter(stockData['eps'], 2)}</span>
+            </div>
+            <div>
+              <span>REVENUE</span>
+              <span className="details-large">{NumberConverter(stockData['sharesOutstanding'] * stockData['revenuePerShare'], 1)}</span>
+            </div>
+            <div>
+              <span>EBITDA</span>
+              <span className="details-large">{NumberConverter(stockData['ebitda'], 2)}</span>
+            </div>
+            <div>
+              <span>NET INCOME</span>
+              <span className="details-large">{NumberConverter(stockData['sharesOutstanding'] * stockData['netIncomePerShare'], 1)}</span>
+            </div>
+            <div>
+              <span>CASH</span>
+              <span className="details-large">{NumberConverter(stockData['sharesOutstanding'] * stockData['cashPerShare'], 1)}</span>
+            </div>
+            <div>
+              <span>PRICE TO SALES</span>
+              <span className="details-large">{NumberConverter(stockData['priceToSalesRatio'], 2)}</span>
+            </div>
           </div>
           <div id="details-flex-right">
-            <div>52W HIGH<span className="details-large">{NumberConverter(stockData['yearHigh'], 2)}</span></div>
-            <div>52W LOW<span className="details-large">{NumberConverter(stockData['yearLow'], 2)}</span></div>
-            <div>50 MA<span className="details-large">{NumberConverter(stockData['priceAvg50'], 2)}</span></div>
-            <div>200 MA<span className="details-large">{NumberConverter(stockData['priceAvg200'], 2)}</span></div>
-            <div>BETA<span className="details-large">{NumberConverter(stockData['beta'], 2, 1)}</span></div>
-            <div>PE<span className="details-large">{NumberConverter(stockData['peRatio'], 2, 1)}</span></div>
+            <div>
+              <span>52W HIGH</span>
+              <span className="details-large">{NumberConverter(stockData['yearHigh'], 2)}</span>
+            </div>
+            <div>
+              <span>52W LOW</span>
+              <span className="details-large">{NumberConverter(stockData['yearLow'], 2)}</span>
+            </div>
+            <div>
+              <span>50 MA</span>
+              <span className="details-large">{NumberConverter(stockData['priceAvg50'], 2)}</span>
+            </div>
+            <div>
+              <span>200 MA</span>
+              <span className="details-large">{NumberConverter(stockData['priceAvg200'], 2)}</span>
+            </div>
+            <div>
+              <span>BETA</span>
+              <span className="details-large">{NumberConverter(stockData['beta'], 2, 1)}</span>
+            </div>
+            <div>
+              <span>PE</span>
+              <span className="details-large">{NumberConverter(stockData['peRatio'], 2, 1)}</span>
+            </div>
           </div>
         </div>
       </div>
