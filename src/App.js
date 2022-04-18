@@ -9,6 +9,7 @@ import Cookies from './components/Cookies';
 import Contact from './components/Contact';
 import Company from './components/Company';
 import Charts from './components/Charts';
+import Details from './components/Details';
 import StockTicker from './components/StockTicker';
 import NotFound from './components/NotFound';
 
@@ -16,10 +17,14 @@ const App = () => {
   const [active, setActive] = useState('AAPL');
 
   useEffect(() => {
-    if (localStorage.getItem('active') === null) {
-      localStorage.setItem('active', active);
-      setActive(localStorage.getItem('active'));
-    };
+    try {
+      if (localStorage.getItem('active') === null) {
+        localStorage.setItem('active', active);
+        setActive(localStorage.getItem('active'));
+      };
+    } catch (error) {
+      console.log(error);
+    }    
   });
 
   return (
@@ -31,6 +36,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<section></section>} />
           <Route path="charts" element={<Charts />} />
+          <Route path="details" element={<Details />} />
           <Route path="company" element={<Company />} />
           <Route path="terms" element={<Terms />} />
           <Route path="privacy" element={<Privacy />} />

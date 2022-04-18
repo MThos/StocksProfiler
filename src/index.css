@@ -136,6 +136,7 @@ a {
 .company-green {
   color: mediumseagreen;
   font-size: 2.5rem;
+  padding-top: 5px;
 }
 
 #company-image {
@@ -149,6 +150,7 @@ a {
 
 .company-large {
   font-size: 1.5rem;
+  padding-top: 5px;
 }
 
 #company-middle-flex {
@@ -156,9 +158,15 @@ a {
   flex-direction: row;
   font-size: 1rem;
   font-weight: 600;
-  gap: 50px;
+  gap: 100px;
   margin: 30px auto;
   text-align: center;
+}
+
+#company-middle-flex div {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
 }
 
 #company-money-details {
@@ -166,8 +174,15 @@ a {
   flex-direction: row;
   font-size: 1rem;
   font-weight: 600;
-  gap: 50px;
+  gap: 25px;
   margin: 30px auto;
+  text-align: center;
+}
+
+#company-money-details div {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
 }
 
 #company-name {
@@ -244,61 +259,110 @@ a {
   margin: 50px 110px 25px auto;
 }
 
-.details-header {
-  border-bottom: 4px solid rgba(0, 0, 0, 0.8);
-  font-size: 2rem;
-  font-weight: 600;
-  margin: 10px auto 20px auto;
-  width: fit-content;
+#details {
+  margin-top: 5px;
 }
 
-#details-flex {
-  background: white;
-  color: black;
+.details-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+#details-flex-left div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+  width: 200px;
+}
+
+#details-flex-mid div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+  width: 200px;
+}
+
+#details-flex-right div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+  width: 200px;
+}
+
+.details-green {
+  color: mediumseagreen;
+  font-size: 2.5rem;
+  padding-top: 5px;
+}
+
+#details-image {
+  margin: 0 auto;
+  padding: 35px 0 10px 0;
+}
+
+.details-large {
+  font-size: 1.5rem;
+  padding-top: 5px;
+}
+
+#details-middle-flex {
   display: flex;
   flex-direction: row;
   font-size: 1rem;
-  justify-content: space-evenly;
-  margin: 0 auto;
-  padding: 10px;
-  text-align: left;
+  font-weight: 600;
+  gap: 100px;
+  margin: 30px auto;
+  text-align: center;
 }
 
-.details-flex-column {
-  flex: 1 1 0px;
+#details-money {
+  display: flex;
+  flex-direction: row;
+  font-size: 1rem;
+  font-weight: 600;
+  gap: 25px;
+  margin: 30px auto;
+  text-align: center;
 }
 
-.details-flex-column:nth-child(odd) {
-  border-top: 2px solid rgba(0, 0, 0, 0.2);
-  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
-  border-left: 2px solid rgba(0, 0, 0, 0.2);
-  margin-left: 3px;
+#details-money div {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
 }
 
-.details-flex-column:nth-child(even) {
-  border-top: 2px solid rgba(0, 0, 0, 0.2);
-  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
-  border-right: 2px solid rgba(0, 0, 0, 0.2);
-  margin-right: 3px;
+.details-money-under {
+  color: "black";
+  display: "block";
+  font-size: 1.1rem;
+  font-weight: "600";
+  padding-top: 8px;
+  text-align: "center";
 }
 
-.details-flex-column ul {
-  list-style-type: none;
-  margin: 0;
-  padding-left: 0;
+#details-name {
+  border-top: 4px solid rgba(0, 0, 0, 0.8);
+  color: black;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 auto 20px auto;
+  padding: 10px 0 0 0;
+  width: fit-content;
 }
 
-.details-flex-column li {
-  font-weight: 400;
-  padding: 15px 10px;
+.details-red {
+  color: red;
+  font-size: 2.5rem;
+  padding-top: 5px;
 }
 
-.details-flex-column li:nth-child(odd) {
-  background: rgba(200, 200, 200, 0.3);
-}
-
-.details-flex-column li:nth-child(even) {
-  background: rgba(200, 200, 200, 0.1);
+#details-symbol {
+  color: black;
+  font-size: 2.5rem;
+  font-weight: 600;
+  padding: 0 0 10px 0;
+  text-align: center;
 }
 
 footer {

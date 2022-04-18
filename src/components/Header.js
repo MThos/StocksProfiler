@@ -4,12 +4,16 @@ const Header = () => {
   const [active, setActive] = useState('');
 
   const handleKeyPress = (e) => {
-    if (e.key === "Enter" && e.target.value.length > 0) {
-      localStorage.setItem('active', e.target.value.toUpperCase());
-      setActive(e.target.value);
-      e.target.blur();
-      e.target.value = "";
-    }
+    try {
+      if (e.key === "Enter" && e.target.value.length > 0) {
+        localStorage.setItem('active', e.target.value.toUpperCase());
+        setActive(e.target.value);
+        e.target.blur();
+        e.target.value = "";
+      }
+    } catch (error) {
+      console.log(error);
+    }    
   }
 
   useEffect(() => {
