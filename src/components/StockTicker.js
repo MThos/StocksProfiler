@@ -73,7 +73,7 @@ const StockTicker = () => {
               </span>
               <span className={stock.changesPercentage.toString().substring(0,1) == "-" ? 
                 "ticker-percent red" : 
-                "ticker-percent green"}>{NumberConverter(stock.changesPercentage, 1)}%</span>
+                "ticker-percent green"}>{NumberConverter(stock.changesPercentage, 2)}%</span>
             </div>)            
           }
           {

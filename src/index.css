@@ -312,7 +312,7 @@ a {
   font-size: 1rem;
   font-weight: 600;
   gap: 100px;
-  margin: 30px auto;
+  margin: 30px auto 0 auto;
   text-align: center;
 }
 

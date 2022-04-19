@@ -1,7 +1,15 @@
-// desc: converts number to a short length form with T/B/M/K and fixed number of decimals.
-// params: fixed: decimals to display , returnSign: 2 = "+"/"-", 1 = "-"/"", 0 = "" 
+/*
+  @name: NumberConverter
+  @desc: converts number to a short length form with T/B/M/K and fixed number of decimals.
+  @params: fixed: decimals to display , returnSign: 2 = "+"/"-", 1 = "-"/"", 0 = ""
+  @returns: string
+*/
 export function NumberConverter(value, fixed=0, returnSign=0) {
   try {
+    if (value == null) {
+      return "0";
+    }
+    
     if (value.toString().length > 0) {
       let sign = "";
       
@@ -33,6 +41,12 @@ export function NumberConverter(value, fixed=0, returnSign=0) {
   }  
 }
 
+/*
+  @name: Subtract
+  @desc: subtracts the variable b from a.
+  @params: fixed: decimals to display , returnSign: 2 = "+"/"-", 1 = "-"/"", 0 = ""
+  @returns: string
+*/
 export function Subtract(a, b, fixed=0, returnSign=0) {
   try {    
     return NumberConverter(a - b, fixed, returnSign);

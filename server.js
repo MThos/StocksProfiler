@@ -10,7 +10,7 @@ app.use(cors());
 // API KEY
 const API_KEY = process.env.REACT_APP_API_KEY
 
-// COMPANY
+// PROFILE
 app.get('/profile', (req, res) => {
   try {
     let symbol = req.query.symbol;
@@ -18,6 +18,66 @@ app.get('/profile', (req, res) => {
     const options = {
       method: 'GET',
       url: 'https://financialmodelingprep.com/api/v3/profile/' + symbol + '?apikey=' + API_KEY
+    };
+
+    axios.request(options).then((response) => {
+      res.json(response.data);
+    }).catch((error) => {
+      console.log(error);
+    });
+  } catch (error) {
+    console.log(error);
+  }  
+});
+
+// QUOTE
+app.get('/quote', (req, res) => {
+  try {
+    let symbol = req.query.symbol;
+
+    const options = {
+      method: 'GET',
+      url: 'https://financialmodelingprep.com/api/v3/quote/' + symbol + '?apikey=' + API_KEY
+    };
+
+    axios.request(options).then((response) => {
+      res.json(response.data);
+    }).catch((error) => {
+      console.log(error);
+    });
+  } catch (error) {
+    console.log(error);
+  }  
+});
+
+// KEY METRICS
+app.get('/keymetrics', (req, res) => {
+  try {
+    let symbol = req.query.symbol;
+
+    const options = {
+      method: 'GET',
+      url: 'https://financialmodelingprep.com/api/v3/key-metrics/' + symbol + '?limit=1&apikey=' + API_KEY
+    };
+
+    axios.request(options).then((response) => {
+      res.json(response.data);
+    }).catch((error) => {
+      console.log(error);
+    });
+  } catch (error) {
+    console.log(error);
+  }  
+});
+
+// INCOME STATEMENT
+app.get('/income', (req, res) => {
+  try {
+    let symbol = req.query.symbol;
+
+    const options = {
+      method: 'GET',
+      url: 'https://financialmodelingprep.com/api/v3/income-statement/' + symbol + '?limit=1&apikey=' + API_KEY
     };
 
     axios.request(options).then((response) => {
