@@ -7,6 +7,7 @@ const Details = () => {
   const [quoteData, setQuoteData] = useState([]);
   const [keyMetricData, setKeyMetricData] = useState([]);
   const [incomeData, setIncomeData] = useState([]);
+  const [cashData, setCashData] = useState([]);
   const active = (localStorage.getItem('active')) ? localStorage.getItem('active') : 'AAPL';
 
   useEffect(() => {
@@ -32,6 +33,12 @@ const Details = () => {
       const incomeOptions = {
         method: 'GET',
         url: 'http://localhost:8000/income',
+        params: { symbol: active }
+      };
+
+      const cashOptions = {
+        method: 'GET',
+        url: 'http://localhost:8000/cash',
         params: { symbol: active }
       };
   
@@ -66,12 +73,23 @@ const Details = () => {
       }).catch((error) => {
         console.log(error);
       });
+
+      axios.request(cashOptions).then((response) => {
+        console.log(response.data[0]);
+        console.log(response.status);
+        setCashData(response.data[0]);
+      }).catch((error) => {
+        console.log(error);
+      });
     } catch (error) {
       console.log(error);
     }
   }, [])
 
-  if (Object.keys(profileData).length > 0 && Object.keys(quoteData).length > 0 && Object.keys(keyMetricData).length > 0) {
+  if (Object.keys(profileData).length > 0 && 
+      Object.keys(quoteData).length > 0 && 
+      Object.keys(keyMetricData).length > 0 &&
+      Object.keys(cashData).length > 0) {
     return(
       <section>
         <div id="details" className="details-flex">
@@ -81,7 +99,7 @@ const Details = () => {
             <div>
               <span>PRICE</span>
               <span className="details-green">${NumberConverter(quoteData['price'], 2)}</span>
-              <span className="details-money-under">{NumberConverter(quoteData['change'], 2, 2)}</span>
+              <span className="details-money-under">{NumberConverter(quoteData['change'], 2, 2)} ({NumberConverter(quoteData['changesPercentage'], 1, 2)}%)</span>
               <span className="details-money-under">{NumberConverter(quoteData['dayLow'], 2)} &#8212; {NumberConverter(quoteData['dayHigh'], 2)}</span>
             </div>
             <div>
@@ -126,27 +144,27 @@ const Details = () => {
             <div id="details-flex-mid">
               <div>
                 <span>EPS</span>
-                <span className="details-large">{NumberConverter(quoteData['eps'], 2)}</span>
+                <span className="details-large">{NumberConverter(quoteData['eps'], 2, 1)}</span>
               </div>
               <div>
                 <span>REVENUE</span>
-                <span className="details-large">{NumberConverter(quoteData['sharesOutstanding'] * keyMetricData['revenuePerShare'], 1)}</span>
+                <span className="details-large">{NumberConverter(incomeData['revenue'], 1, 1)}</span>
               </div>
               <div>
                 <span>EBITDA</span>
-                <span className="details-large">{NumberConverter(incomeData['ebitda'], 2)}</span>
+                <span className="details-large">{NumberConverter(incomeData['ebitda'], 2, 1)}</span>
               </div>
               <div>
                 <span>NET INCOME</span>
-                <span className="details-large">{NumberConverter(quoteData['sharesOutstanding'] * keyMetricData['netIncomePerShare'], 1)}</span>
+                <span className="details-large">{NumberConverter(cashData['netIncome'], 1, 1)}</span>
               </div>
               <div>
                 <span>CASH</span>
-                <span className="details-large">{NumberConverter(quoteData['sharesOutstanding'] * keyMetricData['cashPerShare'], 1)}</span>
+                <span className="details-large">{NumberConverter(cashData['cashAtEndOfPeriod'], 1, 1)}</span>
               </div>
               <div>
                 <span>PRICE TO SALES</span>
-                <span className="details-large">{NumberConverter(keyMetricData['priceToSalesRatio'], 2)}</span>
+                <span className="details-large">{NumberConverter(keyMetricData['priceToSalesRatio'], 2, 1)}</span>
               </div>
             </div>
             <div id="details-flex-right">
@@ -172,7 +190,7 @@ const Details = () => {
               </div>
               <div>
                 <span>PE</span>
-                <span className="details-large">{NumberConverter(quoteData['pe'], 2, 1)}</span>
+                <span className="details-large">{NumberConverter(keyMetricData['peRatio'], 2, 1)}</span>
               </div>
             </div>
           </div>
