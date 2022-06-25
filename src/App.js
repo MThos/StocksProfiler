@@ -10,6 +10,7 @@ import Contact from './components/Contact';
 import Company from './components/Company';
 import Charts from './components/Charts';
 import Details from './components/Details';
+import Financials from './components/Financials';
 import StockTicker from './components/StockTicker';
 import NotFound from './components/NotFound';
 
@@ -37,6 +38,7 @@ const App = () => {
           <Route path="/" element={<section></section>} />
           <Route path="charts" element={<Charts />} />
           <Route path="details" element={<Details />} />
+          <Route path="financials" element={<Financials />} />
           <Route path="company" element={<Company />} />
           <Route path="terms" element={<Terms />} />
           <Route path="privacy" element={<Privacy />} />

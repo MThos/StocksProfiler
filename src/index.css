@@ -1,5 +1,5 @@
 body {
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.88);
   color: black;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Nanum Gothic Coding', 'Roboto',
@@ -58,6 +58,12 @@ a {
 
 .bold {
   font-weight: 600 !important;
+}
+
+.border-top {
+  border-top: 4px solid rgba(0, 0, 0, 0.8);
+  margin: 0 auto;
+  width: 100px;
 }
 
 #chart-time {
@@ -158,7 +164,7 @@ a {
   flex-direction: row;
   font-size: 1rem;
   font-weight: 600;
-  gap: 100px;
+  gap: 40px;
   margin: 30px auto;
   text-align: center;
 }
@@ -166,7 +172,7 @@ a {
 #company-middle-flex div {
   display: flex;
   flex-direction: column;
-  width: 200px;
+  width: 250px;
 }
 
 #company-money-details {
@@ -365,6 +371,62 @@ a {
   text-align: center;
 }
 
+.financial-button {
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.financial-button a {
+  color: black;
+  cursor: pointer;
+  padding: 10px 15px;
+}
+
+.financial-button a:hover {
+  color: mediumslateblue;
+}
+
+.financial-button a:active {
+  color: mediumslateblue;
+}
+
+.financial-button-active {
+  background: rgb(0, 0, 0, 0.9) !important;
+  border-radius: 5px;
+  color: white !important;
+}
+
+.financial-datestamp {
+  color: mediumseagreen;
+  font-size: 2.5rem;
+  font-weight: 600;
+  padding-left: 20px;
+  text-transform: capitalize;
+}
+
+#financial-header {
+  align-items: center;
+  gap: 100px;
+  margin: 40px auto;
+}
+
+#financial-header * {
+  display: flex;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
 footer {
   background: rgba(200, 200, 200, 0.1);
   border-top: 8px solid rgba(0, 0, 0, 0.1);
@@ -446,7 +508,7 @@ header {
 }
 
 .legal {
-  padding: 10px 70px;
+  padding: 10px 70px 30px 70px;
   text-align: left;
 }
 

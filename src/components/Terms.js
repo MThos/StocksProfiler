@@ -215,6 +215,27 @@ const Terms = () => {
         <div class="legal-body">
           We reserve the right, at our sole discretion, to update, change or replace any part of these Terms of Service by posting updates and changes to our website. It is your responsibility to check our website periodically for changes. Your continued use of or access to our website or the Service following the posting of any changes to these Terms of Service constitutes acceptance of those changes.
         </div>
+      </div>      
+      <div className="legal">
+        <div className="legal-sub-header">INVESTMENT RISKS</div>
+          <div class="legal-body">
+            There are risks associated with investing in securities. Investing in stocks, bonds, exchange traded funds, mutual funds, and money market funds involve risk of loss. Loss of principal is possible. Some high risk investments may use leverage, which will accentuate gains and losses.
+          </div>
+      </div>
+      <div className="legal">
+        <div className="legal-sub-header">NO INVESTMENT ADVICE</div>
+          <div class="legal-body">
+            Stocks Profiler is for informational purposes only, you should not construe any such information or other material as legal, tax, investment, financial, or other advice. Nothing contained on our Site constitutes a solicitation, recommendation, endorsement, or offer by Stocks Profiler or any third party service provider to buy or sell any securities or other financial instruments in this or in in any other jurisdiction in which such solicitation or offer would be unlawful under the securities laws of such jurisdiction.
+          </div>
+      </div>
+      <div className="legal">
+        <div className="legal-sub-header">FINANCIAL DATA AND ACCURACY - FINANCIAL MODELING PREP</div>
+          <div class="legal-body">
+              Our data is provided in real time or near real time by: <a href="https://www.financialmodelingprep.com">Financial Modeling Prep</a>
+          </div>
+          <div class="legal-body">
+            The following statement is provided by FMP: "Financial Modeling Prep API provides real time stock price, company financial statements, major index prices, stock historical data, forex real time rate and cryptocurrencies. Financial Modeling Prep stock price API is in real time, the company reports can be found in quarter or annual format, and goes up to 30 years back in history."
+          </div>
       </div>
       <div className="legal">
         <div className="legal-sub-header">CONTACT INFORMATION</div>
