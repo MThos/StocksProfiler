@@ -12,20 +12,21 @@ app.use(cors());
 const API_KEY = process.env.REACT_APP_API_KEY
 
 // MONGODB CONNECTION
-const mongoAddress = "127.0.0.1";
-const mongoPort = "27017";
-mongoose.connect(`mongodb://${mongoAddress}:${mongoPort}/stocks?directConnection=true&serverSelectionTimeoutMS=2000`);
+const mongo_address = "127.0.0.1";
+const mongo_port = "27017";
+mongoose.connect(`mongodb://${mongo_address}:${mongo_port}/stocks?directConnection=true&serverSelectionTimeoutMS=2000`);
 const db = mongoose.connection;
 db.on('error', error => console.log(error));
 db.once('connected', () => {
-  console.log(`MongoDB connected -> ${mongoAddress} : ${mongoPort}.`);
+  console.log(`MongoDB connected -> ${mongo_address} : ${mongo_port}.`);
   //db.collection('').deleteMany(); // delete collection data
   //db.dropDatabase(); // delete database
 });
 
 // RUN SERVER
-try {  
+try {
   app.listen(8000, () => console.log(`Server is running -> 127.0.0.1 : ${port}.`));
+  cachedStockList();
 } catch (error) {
   console.log(error);
 }
@@ -215,6 +216,55 @@ function cachedTickerData(type, req, res, end_point, cache_time) {
           }
         });
 
+        console.log(`Database request (${type}) -> ${new Date().toUTCString()}`);
+      }
+    });    
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// does not require a symbol to be passed
+function cachedStockList() {
+  try {
+    let type = 'stocklist';
+    let end_point = `https://financialmodelingprep.com/api/v3/available-traded/list?apikey=${API_KEY}`;
+    let cache_time = 1000 * 60 * 60 * 24; // 24 hours
+    db.collection(type).countDocuments(
+      {
+        type: type, 
+        timestamp: {
+          $gt: Date.now() - cache_time
+        }
+      }
+    )
+    .then((counter) => {
+      if (counter === 0) {
+        const options = {
+          method: 'GET',
+          url: end_point,
+        };
+    
+        axios.request(options).then((response) => {
+          db.collection(type).replaceOne(
+            {
+              type: type
+            },
+            {
+              type: type, 
+              timestamp: Date.now(),
+              [type]: response.data
+            },
+            {
+              upsert: true
+            }
+          );
+
+          console.log(`API request (${type}) -> ${new Date().toUTCString()}`);
+        }).catch((error) => {
+          console.log(error); 
+        });
+      } else {
         console.log(`Database request (${type}) -> ${new Date().toUTCString()}`);
       }
     });    
