@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Ticker from 'react-ticker';
 import axios from 'axios';
 import { NumberConverter } from '../helper';
@@ -43,17 +43,17 @@ const StockTicker = () => {
             <div className="ticker-symbol">
               <span>
                 {
-                stock.symbol == "^IXIC" ? 
+                stock.symbol === "^IXIC" ? 
                 stock.name.toUpperCase().substring(0,6) : 
                 stock.name.toUpperCase().substring(0,3)
                 }:
               </span>
-              <span className={stock.changesPercentage.toString().substring(0,1) == "-" ? 
+              <span className={stock.changesPercentage.toString().substring(0,1) === "-" ? 
                 "ticker-plus-minus red" : 
                 "ticker-plus-minus green"}>
-                  {stock.changesPercentage.toString().substring(0,1) == "-" ? "-" : "+"}
+                  {stock.changesPercentage.toString().substring(0,1) === "-" ? "-" : "+"}
               </span>
-              <span className={stock.changesPercentage.toString().substring(0,1) == "-" ? 
+              <span className={stock.changesPercentage.toString().substring(0,1) === "-" ? 
                 "ticker-percent red" : 
                 "ticker-percent green"}>
                   {NumberConverter(stock.changesPercentage, 2)}%

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { NumberConverter } from '../helper.js';
 
@@ -36,7 +36,7 @@ const Company = () => {
             {stockData['companyName']}
           </div>
           <div id="company-image">
-            <img src={stockData['image']} />
+            <img src={stockData['image']} alt={stockData['symbol']} />
           </div>        
           <div id="company-basic-details">
             <div id="company-exchange">

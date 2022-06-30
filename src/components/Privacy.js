@@ -1,3 +1,5 @@
+import React from 'react';
+
 const Privacy = () => {
   return(
     <div className="legal-flex">

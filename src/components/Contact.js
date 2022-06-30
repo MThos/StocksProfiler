@@ -1,3 +1,5 @@
+import React from 'react';
+
 const Contact = () => {
   return(
     <section>
@@ -16,7 +18,7 @@ const Contact = () => {
           <div id="contact-git">
             <p>If you would like to contribute to the project or assist in fixing bugs or technical issues - we always welcome the assistance.</p>
             <p>Please feel free to clone our repository or send feedback.</p>
-            <p>You can find our GitHub at: <a href="https://github.com/MThos/stocks-profiler" target="_blank">https://github.com/MThos/stocks-profiler</a></p>
+            <p>You can find our GitHub at: <a href="https://github.com/MThos/stocks-profiler" target="_blank" rel="noopener noreferrer">https://github.com/MThos/stocks-profiler</a></p>
           </div>
         </div>
       </div>
