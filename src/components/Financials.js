@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import AnimateStyled from 'animate-styled';
 import { NumberConverter } from '../helper.js';
 import Button from './Button';
 
@@ -38,6 +39,7 @@ const Financials = () => {
       Object.keys(quarterlyData).length > 0) {
     return(
       <section>
+        <AnimateStyled name="fadeIn" iterationCount="1" duration="1s">
         {<div id="details" className="details-flex">
           <div id="details-symbol">
             {
@@ -50,7 +52,7 @@ const Financials = () => {
             { /* empty */ }
           </div>
           <div id="financial-header" className="flex-row">
-            <Button name="annual" onClick={onClick} active={displayType === 'annual' ? 'yes' : 'no'} />
+            <Button name="annual" displayText={annualData['period'] + ' ' + annualData['calendarYear']} onClick={onClick} active={displayType === 'annual' ? 'yes' : 'no'} />
             <div className="financial-datestamp">
               {
                 displayType === 'annual' ? 
@@ -58,7 +60,7 @@ const Financials = () => {
                   quarterlyData['period'] + '·' + quarterlyData['calendarYear']
               }
             </div>
-            <Button name="quarterly" onClick={onClick} active={displayType === 'quarterly' ? 'yes' : 'no'} />
+            <Button name="quarterly" displayText={quarterlyData['period'] + ' ' + quarterlyData['calendarYear']} onClick={onClick} active={displayType === 'quarterly' ? 'yes' : 'no'} />
           </div>
           <div id="details-middle-flex">
             <div id="details-flex-left">
@@ -271,6 +273,7 @@ const Financials = () => {
             </div>
           </div>
         </div>}
+        </AnimateStyled>
       </section>
     )
   } else {

@@ -1,8 +1,10 @@
 import React from 'react';
+import AnimateStyled from 'animate-styled';
 
 const Terms = () => {
   return(
     <div className="legal-flex">
+    <AnimateStyled name="fadeIn" iterationCount="1" duration="1s">
       <div className="legal-header">TERMS OF SERVICE</div>
       <div className="legal-date">UPDATED: APRIL 03, 2022</div>
       <div className="legal">
@@ -245,6 +247,7 @@ const Terms = () => {
               Questions about the Terms of Service can be sent to us:  <a href="mailto:admin@stocksprofiler.com">admin@stocksprofiler.com</a>
           </div>
       </div>
+      </AnimateStyled>
     </div>
   );
 }

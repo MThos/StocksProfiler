@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import AnimateStyled from 'animate-styled';
 import { Subtract, NumberConverter } from '../helper.js';
 
 const Details = () => {
@@ -42,6 +43,7 @@ const Details = () => {
       Object.keys(cashData).length > 0) {
     return(
       <section>
+      <AnimateStyled name="fadeIn" iterationCount="1" duration="1s">
         <div id="details" className="details-flex">
           <div id="details-symbol">
             {profileData['symbol']}
@@ -207,6 +209,7 @@ const Details = () => {
             </div>
           </div>
         </div>
+        </AnimateStyled>
       </section>
     )
   } else {

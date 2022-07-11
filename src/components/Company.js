@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import AnimateStyled from 'animate-styled';
 import { NumberConverter } from '../helper.js';
 
 const Company = () => {
@@ -28,6 +29,7 @@ const Company = () => {
   if (Object.keys(stockData).length > 0) { 
     return(
       <section>
+      <AnimateStyled name="fadeIn" iterationCount="1" duration="1s">
         <div id="company" className="company-flex">
           <div id="company-symbol">
             {stockData['symbol']}
@@ -96,6 +98,7 @@ const Company = () => {
             {stockData['description']}
           </div>
         </div>
+        </AnimateStyled>
       </section>    
     )
   } else {

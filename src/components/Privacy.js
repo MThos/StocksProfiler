@@ -1,8 +1,10 @@
 import React from 'react';
+import AnimateStyled from 'animate-styled';
 
 const Privacy = () => {
   return(
     <div className="legal-flex">
+    <AnimateStyled name="fadeIn" iterationCount="1" duration="1s">
       <div className="legal-header">PRIVACY POLICY</div>
       <div className="legal-date">UPDATED: APRIL 03, 2022</div>
       <div className="legal">
@@ -101,6 +103,7 @@ const Privacy = () => {
           For more information about your privacy, if you have questions, or if you would like to make a complaint, please contact us by e-mail: <a href="mailto:admin@stocksprofiler.com">admin@stocksprofiler.com</a>
         </div>
       </div>
+      </AnimateStyled>
     </div>
   );
 }

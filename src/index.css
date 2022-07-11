@@ -371,23 +371,20 @@ a {
   text-align: center;
 }
 
-.financial-button {
+.financial-button button {
+  color: black;
+  cursor: pointer;
   font-size: 1.2rem;
   font-weight: 600;
+  padding: 10px 15px;
   text-transform: capitalize;
 }
 
-.financial-button a {
-  color: black;
-  cursor: pointer;
-  padding: 10px 15px;
-}
-
-.financial-button a:hover {
+.financial-button button:hover {
   color: mediumslateblue;
 }
 
-.financial-button a:active {
+.financial-button button:active {
   color: mediumslateblue;
 }
 

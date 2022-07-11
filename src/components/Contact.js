@@ -1,8 +1,10 @@
 import React from 'react';
+import AnimateStyled from 'animate-styled';
 
 const Contact = () => {
   return(
-    <section>
+    <section>      
+      <AnimateStyled name="fadeIn" iterationCount="1" duration="1s">
       <div id="contact" className="contact-flex">
         <div id="contact-header">
           <div>QUESTIONS OR CONCERNS?</div>
@@ -22,6 +24,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
+      </AnimateStyled>
     </section>    
   );
 }
