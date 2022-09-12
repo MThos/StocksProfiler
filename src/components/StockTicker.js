@@ -18,7 +18,7 @@ const StockTicker = () => {
 
       axios.all(endPoints.map((endPoint) => axios.get(endPoint)))
       .then((response) => {
-        console.log(response);
+        //console.log(response);
         setGainers(response[0].data.slice(0, 4));
         setLosers(response[1].data.slice(0, 4));
         setIndexes(response[2].data);
@@ -58,8 +58,9 @@ const StockTicker = () => {
                 "ticker-percent green"}>
                   {NumberConverter(stock.changesPercentage, 2)}%
               </span>
-            </div>)            
+            </div>)
           }
+          <span className="ticker-spacer"></span>
           {
           gainers.map(stock =>
             <div className="ticker-symbol">
@@ -74,6 +75,7 @@ const StockTicker = () => {
               </span>
             </div>)
           }
+          <span className="ticker-spacer"></span>
           {
           losers.map(stock =>
             <div className="ticker-symbol">
