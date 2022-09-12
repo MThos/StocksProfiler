@@ -7,6 +7,10 @@ A web app dedicated to viewing stock information in a user friendly and simplifi
 ### Development
 This app is developed with ReactJS and NodeJS and uses MongoDB to store data that we gather from Financial Modeling Prep APIs.
 <br/><br/>
+server.js: handles most of the API and database side of the application.
+<br/><br/>
+environment variables: .env.example shows what the .env file should look like for the app to work.
+<br/><br/>
 ### Support
 For support please reach out to me directly at mykel.thos@gmail.com
 <br/><br/>
