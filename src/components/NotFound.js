@@ -1,19 +1,14 @@
 import React from 'react';
-import AnimateStyled from 'animate-styled';
 
 const NotFound = () => {
   return(
-    <section id="not-found">
-    <AnimateStyled name="fadeIn" iterationCount="1" duration="1s">
-      <div id="not-found-title">-404%</div>
-      <div id="not-found-description">
-        <p>This is embarrassing but,</p>
-        <p>We cannot find the page you have requested.</p>
-        <p>Don't worry, it could be our fault ...</p>
-        <br/>
-        <p className="bold red">... or its stock has been heavily shorted!</p>
+    <section id="not-found" className="fade-in">
+      <div id="not-found-top">
+        <p>This is embarrassing &#8212; we cannot find that page.<br/>Don't worry, it could be our fault ...</p>
       </div>
-    </AnimateStyled>
+      <div id="not-found-title">-404%</div>
+      <div id="not-found-bottom">... or its stock has been heavily shorted!</div>
+      <div id="not-found-code">Error Code: 404 - Page Not Found</div>
     </section>
   )
 }
