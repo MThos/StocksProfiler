@@ -21,7 +21,7 @@ const Header = () => {
   });  
 
   let symbol = (active) ? active : "";
-  let title = "STOCKS·PROFILER";
+  let title = "LOVE THE STOCKS";
 
   return(
     <header>
