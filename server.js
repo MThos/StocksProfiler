@@ -2,7 +2,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const axios = require('axios');
 const cors = require('cors');
-const port = 8000;
 const app = express();
 require('dotenv').config();
 
@@ -12,8 +11,8 @@ app.use(cors());
 const API_KEY = process.env.REACT_APP_API_KEY
 
 // MONGODB CONNECTION
-const mongo_address = "127.0.0.1";
-const mongo_port = "27017";
+const mongo_address = process.env.REACT_APP_MONGO_ADDR
+const mongo_port = process.env.REACT_APP_MONGO_PORT
 mongoose.connect(`mongodb://${mongo_address}:${mongo_port}/stocks?directConnection=true&serverSelectionTimeoutMS=2000`);
 const db = mongoose.connection;
 db.on('error', error => console.log(error));
@@ -25,7 +24,8 @@ db.once('connected', () => {
 
 // RUN SERVER
 try {
-  app.listen(8000, () => console.log(`Server is running -> 127.0.0.1 : ${port}.`));
+  const port = process.env.REACT_APP_NODE_PORT
+  app.listen(port, () => console.log(`Server is running -> 127.0.0.1 : ${port}.`));
   cachedStockList();
 } catch (error) {
   console.log(error);
@@ -108,6 +108,22 @@ app.get('/losers', (req, res) => {
   cachedTickerData('losers', req, res, LOSER_ENDPOINT, LOSER_CACHE_TIME);
 });
 
+// PRICE TARGETS
+app.get('/pricetargets', (req, res) => {
+  const SYMBOL = req.query.symbol;
+  const PRICE_TARGETS_CACHE_TIME = 1000 * 60 * 120 // 120 minutes
+  const PRICE_TARGETS_ENDPOINT = `https://financialmodelingprep.com/api/v4/price-target?symbol=${SYMBOL}&apikey=${API_KEY}`;
+  cachedStockData('pricetargets', req, res, SYMBOL, PRICE_TARGETS_ENDPOINT, PRICE_TARGETS_CACHE_TIME);
+});
+
+// PRICE TARGET CONSENSUS
+app.get('/pricetargetconsensus', (req, res) => {
+  const SYMBOL = req.query.symbol;
+  const PRICE_TARGET_CONSENSUS_CACHE_TIME = 1000 * 60 * 120 // 120 minutes
+  const PRICE_TARGET_CONSENSUS_ENDPOINT = `https://financialmodelingprep.com/api/v4/price-target-consensus?symbol=${SYMBOL}&apikey=${API_KEY}`;
+  cachedStockData('pricetargetconsensus', req, res, SYMBOL, PRICE_TARGET_CONSENSUS_ENDPOINT, PRICE_TARGET_CONSENSUS_CACHE_TIME);
+});
+
 // requires a symbol to be passed
 function cachedStockData(type, req, res, symbol, end_point, cache_time) {
   try {
@@ -142,7 +158,7 @@ function cachedStockData(type, req, res, symbol, end_point, cache_time) {
           );
 
           res.json(response.data);
-          console.log(`API request (${type}) -> ${new Date().toUTCString()}`);
+          console.log(`API request (${type}) -> ${new Date().toUTCString()} -> Client: ${req.socket.remoteAddress}`);
         }).catch((error) => {
           console.log(error); 
         });
@@ -158,7 +174,7 @@ function cachedStockData(type, req, res, symbol, end_point, cache_time) {
           }
         });
 
-        console.log(`Database request (${type}) -> (${symbol}) -> ${new Date().toUTCString()}`);
+        console.log(`Database request (${type}) -> (${symbol}) -> ${new Date().toUTCString()} -> Client: ${req.socket.remoteAddress}`);
       }
     });    
   } catch (error) {
@@ -200,7 +216,7 @@ function cachedTickerData(type, req, res, end_point, cache_time) {
           );
 
           res.json(response.data);
-          console.log(`API request (${type}) -> ${new Date().toUTCString()}`);
+          console.log(`API request (${type}) -> ${new Date().toUTCString()} -> Client: ${req.socket.remoteAddress}`);
         }).catch((error) => {
           console.log(error); 
         });
@@ -216,7 +232,7 @@ function cachedTickerData(type, req, res, end_point, cache_time) {
           }
         });
 
-        console.log(`Database request (${type}) -> ${new Date().toUTCString()}`);
+        console.log(`Database request (${type}) -> ${new Date().toUTCString()} -> Client: ${req.socket.remoteAddress}`);
       }
     });    
   } catch (error) {
