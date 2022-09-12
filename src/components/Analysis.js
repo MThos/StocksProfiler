@@ -16,8 +16,8 @@ const Analysis = () => {
 
       axios.all(endPoints.map((endPoint) => axios.get(endPoint, { params: { symbol: active }})))
       .then((response) => {
-        console.log(response);
-        setPriceTargetsData(response[0]['data'][0]);
+        //console.log(response);
+        setPriceTargetsData(response[0]['data']);
         setPriceTargetConsensusData(response[1]['data'][0]);
       }).catch((error) => {
         console.log(error);
@@ -56,12 +56,66 @@ const Analysis = () => {
             </div>            
           </div>
         </div>
+        <div id="analysis-list">
+          { AnalysisList(priceTargetsData) }
+        </div>
       </section>
     )
   } else {
     return null;
   }
   
+}
+
+const AnalysisList = (priceTargetsData) => {
+  const analysis_collection = [];
+
+  priceTargetsData.map((key) => {
+    analysis_collection.push(
+      <div id="analysis-summary">
+        <div id="analyst-row-1" className="analysis-row">
+          <div>
+            <div className="analysis-small">Price Target</div>
+            <div className="analysis-green-small">${key['priceTarget']}</div>
+          </div>
+          <div>
+            <div className="analysis-small">Published</div> 
+            <div className="analysis-large">{key['publishedDate'].substring(0, 10)}</div>
+          </div>
+          <div>
+            <div className="analysis-small">Price When Posted</div>
+            <div className="analysis-green-small">${key['priceWhenPosted']}</div>
+          </div>
+        </div>
+        <div id="analyst-row-2" className="analysis-row">
+          <div>
+            <div className="analysis-small">Analyst Name</div>
+            <div className="analysis-large">{key['analystName'] ? key['analystName'] : "N/A"}</div>
+          </div>
+          <div>
+            <div className="analysis-small">Publisher</div>
+            <div className="analysis-large">{key['newsPublisher'] ? key['newsPublisher'] : "N/A"}</div>
+          </div>
+          <div>
+            <div className="analysis-small">Analyst Company</div>
+            <div className="analysis-large">{key['analystCompany'] ? key['analystCompany'] : "N/A"}</div>
+          </div>
+        </div>
+        <div id="analyst-row-3" className="analysis-row">
+          <div>
+            <div className="analysis-small">Article</div>
+            <div className="analysis-medium">
+              <a href={key['newsURL']} target="_blank">
+                {key['newsTitle'] && key['newsTitle'].length >= 60 ? key['newsTitle'].substring(0, 60) : key['newsTitle']}....
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  })
+
+  return analysis_collection;
 }
 
 export default Analysis;
