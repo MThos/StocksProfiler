@@ -3,6 +3,8 @@
 
 ### Description
 A web app dedicated to viewing stock information in a user friendly and simplified format.
+<br/>
+server.js handles most of the API and database side of the application.
 <br/><br/>
 ### Development
 This app is developed with ReactJS and NodeJS and uses MongoDB to store data that we gather from Financial Modeling Prep APIs.
