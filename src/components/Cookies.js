@@ -1,10 +1,8 @@
 import React from 'react';
-import AnimateStyled from 'animate-styled';
 
 const Cookies = () => {
   return(
-    <div className="legal-flex">
-    <AnimateStyled name="fadeIn" iterationCount="1" duration="1s">
+    <div className="legal-flex fade-in">
       <div className="legal-header">COOKIE POLICY</div>
       <div className="legal-date">UPDATED: APRIL 03, 2022</div>
       <div className="legal">
@@ -71,7 +69,6 @@ const Cookies = () => {
           However, if you are still looking for more information then you can contact us through our preferred contact method: <a href="mailto:admin@stocksprofiler.com">admin@stocksprofiler.com</a>
         </div>
       </div>
-      </AnimateStyled>
     </div>
   );
 }

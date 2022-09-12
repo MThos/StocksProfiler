@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import AnimateStyled from 'animate-styled';
 import { NumberConverter } from '../helper.js';
 import Button from './Button';
 
@@ -38,8 +37,7 @@ const Financials = () => {
   if (Object.keys(annualData).length > 0 && 
       Object.keys(quarterlyData).length > 0) {
     return(
-      <section>
-        <AnimateStyled name="fadeIn" iterationCount="1" duration="1s">
+      <section className="fade-in">
         {<div id="details" className="details-flex">
           <div id="details-symbol">
             {
@@ -273,7 +271,6 @@ const Financials = () => {
             </div>
           </div>
         </div>}
-        </AnimateStyled>
       </section>
     )
   } else {

@@ -1,10 +1,8 @@
 import React from 'react';
-import AnimateStyled from 'animate-styled';
 
 const Privacy = () => {
   return(
-    <div className="legal-flex">
-    <AnimateStyled name="fadeIn" iterationCount="1" duration="1s">
+    <div className="legal-flex fade-in">
       <div className="legal-header">PRIVACY POLICY</div>
       <div className="legal-date">UPDATED: APRIL 03, 2022</div>
       <div className="legal">
@@ -51,16 +49,16 @@ const Privacy = () => {
       </div>
       <div className="legal">
         <div className="legal-sub-header">SHARING YOUR PERSONAL INFORMATION</div>
-        <div class="legal-body">
+        <div className="legal-body">
           We share your Personal Information with third parties to help us use your Personal Information, as described above.  For example, we use Shopify to power our online store - you can read more about how Shopify uses your Personal Information: https://www.shopify.com/legal/privacy. We also use Google Analytics to help us understand how our customers use the Site - you can read more about how Google uses your Personal Information here: https://www.google.com/intl/en/policies/privacy/. You can also opt-out of Google Analytics: https://tools.google.com/dlpage/gaoptout.
         </div>
-        <div class="legal-body">
+        <div className="legal-body">
           Finally, we may also share your Personal Information to comply with applicable laws and regulations, to respond to a subpoena, search warrant or other lawful request for information we receive, or to otherwise protect our rights.
         </div>
-        <div class="legal-body">
+        <div className="legal-body">
           As described above, we use your Personal Information to provide you with targeted advertisements or marketing communications we believe may be of interest to you. For more information about how targeted advertising works, you can visit the Network Advertising Initiative's ("NAI") educational page at http://www.networkadvertising.org/understanding-online-advertising/how-does-it-work.
         </div>
-        <div class="legal-body">
+        <div className="legal-body">
           Additionally, you can opt out of some of these services by visiting the Digital Advertising Alliance's opt-out portal: http://optout.aboutads.info/.
         </div>
       </div>
@@ -103,7 +101,6 @@ const Privacy = () => {
           For more information about your privacy, if you have questions, or if you would like to make a complaint, please contact us by e-mail: <a href="mailto:admin@stocksprofiler.com">admin@stocksprofiler.com</a>
         </div>
       </div>
-      </AnimateStyled>
     </div>
   );
 }

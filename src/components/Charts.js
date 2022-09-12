@@ -1,6 +1,5 @@
 import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, CartesianAxis } from 'recharts';
-import AnimateStyled from 'animate-styled';
 
 const Charts = () => {
   let data = [
@@ -58,8 +57,7 @@ const Charts = () => {
   }
 
   return(
-    <section>
-    <AnimateStyled name="fadeIn" iterationCount="1" duration="1s">
+    <section className="fade-in">
       <ResponsiveContainer width={"80%"} height={300} id="daily-chart">
         <BarChart data={data}>
           <CartesianAxis />
@@ -73,7 +71,6 @@ const Charts = () => {
           <Bar type="linear" dataKey="low" stroke="black" fill="red" />
         </BarChart>
       </ResponsiveContainer>
-      </AnimateStyled>
     </section>  
   )
 }
