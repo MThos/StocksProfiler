@@ -8,7 +8,9 @@ const Navbar = () => {
   return(
     <nav id="navbar">
       <ul>
-        <li><Link to="/charts" id="charts" className={active === "/charts" ? 'nav-active' : 'nav-link'} >Charts</Link></li>
+        <li><Link to="/news" id="top" className={active === "/news" ? 'nav-active' : 'nav-link'}>News</Link></li>
+        <li><Link to="/top" id="top" className={active === "/top" ? 'nav-active' : 'nav-link'}>Top 100</Link></li>
+        <li><Link to="/charts" id="charts" className={active === "/charts" ? 'nav-active' : 'nav-link'}>Charts</Link></li>
         <li><Link to="/details" id="details" className={active === "/details" ? 'nav-active' : 'nav-link'}>Details</Link></li>
         <li><Link to="/financials" id="financials" className={active === "/financials" ? 'nav-active' : 'nav-link'}>Financials</Link></li>
         <li><Link to="/analysis" id="analysis" className={active === "/analysis" ? 'nav-active' : 'nav-link'}>Analysis</Link></li>
