@@ -11,7 +11,8 @@ const Contact = () => {
         <div id="contact-body">
           <div className="contact-sub-header">CONTACT</div>
           <div id="contact-email">
-            <p>If you have any questions, comments or concerns you would like to address with us - especially any technical issues you experience while using our website, we would like to hear from you.</p>
+            <p>If you have any questions, comments or concerns you would like to address with us, please reach out.</p>
+            <p>For any technical issues you experience while using our website, reach out to us immediately so we can address them.</p>
             <p>You can email us directly at: <a href="mailto:admin@stocksprofiler.com">admin@stocksprofiler.com</a></p>
           </div>
           <div className="contact-sub-header">GITHUB</div>
