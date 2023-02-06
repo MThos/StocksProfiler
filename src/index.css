@@ -1,5 +1,5 @@
 body {
-  background: rgba(0, 0, 0, 0.88);
+  background: rgba(0, 0, 0, 0.87);
   color: black;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Nanum Gothic Coding', 'Roboto',
@@ -27,7 +27,8 @@ a:active, a:visited {
   font-family: 'Nanum Gothic Coding', Tahoma, sans-serif;
   min-height: 100vh;
   margin: 0 auto;
-  width: 900px;
+  max-width: 1100px;
+  width: 1100px;
 }
 
 #analysis {
@@ -58,7 +59,7 @@ a:active, a:visited {
   font-size: 1rem;
   font-weight: 600;
   gap: 25px;
-  margin: 30px auto;
+  margin: 50px auto;
   text-align: center;
 }
 
@@ -76,12 +77,12 @@ a:active, a:visited {
 #analysis-list {
   display: flex;
   flex-direction: column;
-  margin-top: 50px;
+  margin-top: 20px;
   text-align: center;
 }
 
 .analysis-medium {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   padding-top: 5px;
 }
 
@@ -90,7 +91,7 @@ a:active, a:visited {
   flex-direction: row;
   font-weight: 600;
   justify-content: space-evenly;
-  margin: 20px 30px 40px 30px;
+  margin: 50px 30px;
 }
 
 #analyst-row-1 div {
@@ -110,9 +111,9 @@ a:active, a:visited {
 }
 
 #analysis-summary:nth-of-type(odd) {
-  border-top: 2px solid rgba(0, 0, 0, 0.1);
-  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
-  background: rgb(250, 250, 250, 1);
+  border-top: 1px solid rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  background: rgb(245, 245, 245, 1);
 }
 
 #analysis-symbol {
@@ -121,7 +122,7 @@ a:active, a:visited {
   font-size: 2.5rem;
   font-weight: 600;
   margin: 0 auto;
-  padding: 0 0 10px 0;
+  padding: 0 0 5px 0;
   text-align: center;
   width: fit-content;
 }
@@ -166,6 +167,22 @@ a:active, a:visited {
   border-top: 4px solid rgba(0, 0, 0, 0.8);
   margin: 0 auto;
   width: 100px;
+}
+
+#chart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#chart-symbol {
+  border-bottom: 4px solid rgba(0, 0, 0, 0.8);
+  color: black;
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin: 0 auto 25px auto;
+  text-align: center;
+  width: fit-content;
 }
 
 #chart-time {
@@ -364,7 +381,7 @@ a:active, a:visited {
 }
 
 #daily-chart {
-  margin: 50px 110px 25px auto;
+  margin: 50px 135px 25px auto;
 }
 
 #details {
@@ -381,21 +398,21 @@ a:active, a:visited {
   display: flex;
   flex-direction: column;
   margin-bottom: 25px;
-  width: 200px;
+  width: 250px;
 }
 
 #details-flex-mid div {
   display: flex;
   flex-direction: column;
   margin-bottom: 25px;
-  width: 200px;
+  width: 250px;
 }
 
 #details-flex-right div {
   display: flex;
   flex-direction: column;
   margin-bottom: 25px;
-  width: 200px;
+  width: 250px;
 }
 
 .details-green {
@@ -419,7 +436,7 @@ a:active, a:visited {
   flex-direction: row;
   font-size: 1rem;
   font-weight: 600;
-  gap: 100px;
+  gap: 150px;
   margin: 30px auto 0 auto;
   text-align: center;
 }
@@ -429,7 +446,7 @@ a:active, a:visited {
   flex-direction: row;
   font-size: 1rem;
   font-weight: 600;
-  gap: 25px;
+  gap: 100px;
   margin: 30px auto;
   text-align: center;
 }
@@ -561,7 +578,7 @@ a:active, a:visited {
 
 footer {
   background: rgba(200, 200, 200, 0.1);
-  border-top: 6px solid rgba(0, 0, 0, 0.1);
+  border-top: 2px solid rgba(0, 0, 0, 0.1);
   flex-shrink: 0;
   padding: 5px 0;
 }
@@ -691,13 +708,42 @@ header {
   width: fit-content;
 }
 
+#loading {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 25%;
+  text-align: center;
+}
+
+#loading-icon {
+  animation: loading-icon 1s infinite linear;
+  height: 80px;
+  width: 80px;
+}
+
+@keyframes loading-icon {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-359deg);
+  }
+}
+
+#loading-text {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
 #navbar {
   background: rgba(200, 200, 200, 0.1);
-  border-bottom: 6px solid rgba(0, 0, 0, 0.1);
-  border-top: 6px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  border-top: 2px solid rgba(0, 0, 0, 0.1);
   font-size: 1.1rem;
   font-weight: 400;
-  padding: 2px 10px;
+  padding: 5px 10px;
 }
 
 #navbar a {
@@ -714,8 +760,8 @@ header {
 }
 
 .nav-active {
-  background: rgb(0, 0, 0, 0.9) !important;
-  border: 2px solid rgba(0, 0, 0, 0.5);
+  background: mediumslateblue !important;
+  border: 2px solid mediumslateblue;
   border-radius: 5px;
   color: white !important;
   font-weight: 600;
@@ -738,6 +784,61 @@ header {
   margin: 12px 0;
   padding-left: 0;
   text-align: center;
+}
+
+#news {
+  margin-top: 5px;
+}
+
+#news thead {
+  border: 0;
+}
+
+#news-footer-description {
+  font-size: 0.9rem;
+  margin: 10px 0 0 0;
+  text-align: center;
+}
+
+.news-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+#no-symbol {
+  margin-top: 10%;
+}
+
+.no-symbol-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+#no-symbol-found {
+  font-size: 1.8rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+#no-symbol-found div {
+  margin: 20px 0;
+}
+
+#no-symbol-found span {
+  border-bottom: 2px solid black;
+  font-weight: 700;
+}
+
+#no-symbol-found-sm {
+  font-size: 1.4rem;
+  padding-top: 40px;
+}
+
+#no-symbol-img {
+  margin: 20px 0 10px 0;
+  width: 170px;
 }
 
 #not-found {
@@ -815,6 +916,26 @@ section {
   display: inline;
   font-size: 1.2rem;
   padding: 0 15px;
+}
+
+#top {
+  margin-top: 5px;
+}
+
+#top thead {
+  border: 0;
+}
+
+#top-footer-description {
+  font-size: 0.9rem;
+  margin: 10px 0 0 0;
+  text-align: center;
+}
+
+.top-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .underline {
