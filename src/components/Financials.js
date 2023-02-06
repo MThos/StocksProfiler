@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { NumberConverter } from '../helper.js';
+import LoadingIcon from './LoadingIcon.js';
 import Button from './Button';
+import NoData from './NoData.js';
 
 const Financials = () => {
   const [annualData, setAnnualData] = useState([]);
   const [quarterlyData, setQuarterlyData] = useState([]);
   const [displayType, setDisplayType] = useState("annual");
+  const [isLoading, setLoading] = useState(true);
+
   const active = (localStorage.getItem('active')) ? localStorage.getItem('active') : 'AAPL';
 
   const onClick = (e) => {
@@ -16,6 +20,8 @@ const Financials = () => {
 
   useEffect(() => {
     try {
+      setLoading(true);
+
       const endPoints = [
         'http://localhost:8000/annual',
         'http://localhost:8000/quarterly'
@@ -26,16 +32,24 @@ const Financials = () => {
         console.log(response);
         setAnnualData(response[0]['data'][0]);
         setQuarterlyData(response[1]['data'][0]);
+        setLoading(false);
       }).catch((error) => {
         console.log(error);
       });
     } catch (error) {
       console.log(error);
     }
-  }, [])
+  }, []);
 
-  if (Object.keys(annualData).length > 0 && 
-      Object.keys(quarterlyData).length > 0) {
+  if (isLoading) {
+    return (
+      <LoadingIcon />
+    )
+  }
+
+  if ((annualData && quarterlyData) && 
+       Object.keys(annualData).length > 0 &&
+       Object.keys(quarterlyData).length > 0) {
     return(
       <section className="fade-in">
         {<div id="details" className="details-flex">
@@ -274,7 +288,9 @@ const Financials = () => {
       </section>
     )
   } else {
-    return null;
+    return (
+      <NoData page="financials" />
+    );
   }
   
 }

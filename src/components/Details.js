@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Subtract, NumberConverter } from '../helper.js';
+import LoadingIcon from './LoadingIcon.js';
+import NoData from './NoData.js';
 
 const Details = () => {
   const [profileData, setProfileData] = useState([]);
@@ -8,10 +10,13 @@ const Details = () => {
   const [keyMetricData, setKeyMetricData] = useState([]);
   const [incomeData, setIncomeData] = useState([]);
   const [cashData, setCashData] = useState([]);
+  const [isLoading, setLoading] = useState(true);
   const active = (localStorage.getItem('active')) ? localStorage.getItem('active') : 'AAPL';
 
   useEffect(() => {
     try {
+      setLoading(true);
+
       const endPoints = [
         'http://localhost:8000/profile',
         'http://localhost:8000/quote',
@@ -22,25 +27,33 @@ const Details = () => {
 
       axios.all(endPoints.map((endPoint) => axios.get(endPoint, { params: { symbol: active }})))
       .then((response) => {
-        console.log(response);
+        //console.log(response);
         setProfileData(response[0]['data'][0]);
         setQuoteData(response[1]['data'][0]);
         setKeyMetricData(response[2]['data'][0]);
         setIncomeData(response[3]['data'][0]);
         setCashData(response[4]['data'][0]);
+        setLoading(false);
       }).catch((error) => {
         console.log(error);
       });
     } catch (error) {
       console.log(error);
     }
-  }, [])
+  }, []);
 
-  if (Object.keys(profileData).length > 0 && 
+  if (isLoading) {
+    return (
+      <LoadingIcon />
+    )
+  }
+
+  if ((profileData && quoteData && keyMetricData && cashData) &&
+      Object.keys(profileData).length > 0 && 
       Object.keys(quoteData).length > 0 && 
       Object.keys(keyMetricData).length > 0 &&
       Object.keys(cashData).length > 0) {
-    return(
+    return (
       <section className="fade-in">
         <div id="details" className="details-flex">
           <div id="details-symbol">
@@ -210,7 +223,9 @@ const Details = () => {
       </section>
     )
   } else {
-    return null;
+    return (
+      <NoData page="details" />
+    );
   }
   
 }

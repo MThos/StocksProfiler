@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { NumberConverter } from '../helper.js';
+import LoadingIcon from './LoadingIcon.js';
+import NoData from './NoData.js';
 
 const Analysis = () => {
   const [priceTargetsData, setPriceTargetsData] = useState([]);
   const [priceTargetConsensusData, setPriceTargetConsensusData] = useState([]);
+  const [isLoading, setLoading] = useState(true);
   const active = (localStorage.getItem('active')) ? localStorage.getItem('active') : 'AAPL';
 
   useEffect(() => {
     try {
+      setLoading(true);
+
       const endPoints = [
         'http://localhost:8000/pricetargets',
         'http://localhost:8000/pricetargetconsensus'
@@ -19,16 +24,25 @@ const Analysis = () => {
         //console.log(response);
         setPriceTargetsData(response[0]['data']);
         setPriceTargetConsensusData(response[1]['data'][0]);
+        setLoading(false);
       }).catch((error) => {
         console.log(error);
       });
     } catch (error) {
       console.log(error);
     }
-  }, [])
+  }, []);
 
-  if (Object.keys(priceTargetsData).length > 0 && 
-      Object.keys(priceTargetConsensusData).length > 0) {
+  if (isLoading) {
+    return (
+      <LoadingIcon />
+    )
+  }
+
+  if ((priceTargetsData && 
+       priceTargetConsensusData) && 
+       Object.keys(priceTargetsData).length > 0 && 
+       Object.keys(priceTargetConsensusData).length > 0) {
     return(
       <section className="fade-in">        
         <div id="analysis" className="analysis-flex">
@@ -62,7 +76,9 @@ const Analysis = () => {
       </section>
     )
   } else {
-    return null;
+    return (
+      <NoData page="analysis" />
+    );
   }
   
 }
@@ -70,7 +86,7 @@ const Analysis = () => {
 const AnalysisList = (priceTargetsData) => {
   const analysis_collection = [];
 
-  priceTargetsData.map((key) => {
+  priceTargetsData.map((key) => (
     analysis_collection.push(
       <div id="analysis-summary">
         <div id="analyst-row-1" className="analysis-row">
@@ -105,7 +121,7 @@ const AnalysisList = (priceTargetsData) => {
           <div>
             <div className="analysis-small">Article</div>
             <div className="analysis-medium">
-              <a href={key['newsURL']} target="_blank">
+              <a href={key['newsURL']} target="_blank" rel="noopener noreferrer">
                 {key['newsTitle'] && key['newsTitle'].length >= 60 ? key['newsTitle'].substring(0, 60) : key['newsTitle']}....
               </a>
             </div>
@@ -113,7 +129,7 @@ const AnalysisList = (priceTargetsData) => {
         </div>
       </div>
     )
-  })
+  ))
 
   return analysis_collection;
 }
