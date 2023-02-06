@@ -13,6 +13,8 @@ import Details from './components/Details';
 import Financials from './components/Financials';
 import StockTicker from './components/StockTicker';
 import Analysis from './components/Analysis';
+import Top from './components/Top';
+import News from './components/News';
 import NotFound from './components/NotFound';
 
 const App = () => {
@@ -30,13 +32,15 @@ const App = () => {
   });
 
   return (
-    <div className="App">      
+    <div className="App">
       <BrowserRouter>
-        <Header />
-        <StockTicker />
-        <Navbar />
+      <Header />
+      <StockTicker />
+        <Navbar />  
         <Routes>
-          <Route path="/" element={<section></section>} />
+          <Route path="/" element={<Top />} />
+          <Route path="news" element={<News />}/>
+          <Route path="top" element={<Top />} />
           <Route path="charts" element={<Charts />} />
           <Route path="details" element={<Details />} />
           <Route path="financials" element={<Financials />} />
