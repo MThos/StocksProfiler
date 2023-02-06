@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { NumberConverter } from '../helper.js';
+import LoadingIcon from './LoadingIcon.js';
+import NoData from './NoData.js';
 
 const Company = () => {
   const [stockData, setStockData] = useState([]);
+  const [isLoading, setLoading] = useState(true);
   const active = (localStorage.getItem('active')) ? localStorage.getItem('active') : 'AAPL';
 
   useEffect(() => {
     try {
+      setLoading(true);
+
       const options = {
         method: 'GET',
         url: 'http://localhost:8000/profile',
@@ -17,6 +22,7 @@ const Company = () => {
       axios.request(options).then((response) => {
         console.log(response.data[0]);
         setStockData(response.data[0]);
+        setLoading(false);
       }).catch((error) => {
         console.log(error);
       });
@@ -25,8 +31,14 @@ const Company = () => {
     }    
   }, []);
 
-  if (Object.keys(stockData).length > 0) { 
-    return(
+  if (isLoading) {
+    return (
+      <LoadingIcon />
+    )
+  }
+
+  if (stockData && Object.keys(stockData).length > 0) { 
+    return (
       <section className="fade-in">
         <div id="company" className="company-flex">
           <div id="company-symbol">
@@ -36,7 +48,11 @@ const Company = () => {
             {stockData['companyName']}
           </div>
           <div id="company-image">
-            <img src={stockData['image']} alt={stockData['symbol']} />
+            <img src={stockData['image']} alt={stockData['symbol']} 
+              onError={({ currentTarget }) => {
+                currentTarget.onerror = null; // prevents looping
+                currentTarget.src="images/missing.png";
+              }}/>
           </div>        
           <div id="company-basic-details">
             <div id="company-exchange">
@@ -99,7 +115,9 @@ const Company = () => {
       </section>    
     )
   } else {
-    return null;
+    return (
+      <NoData page="company" />
+    );
   }  
 }
 
