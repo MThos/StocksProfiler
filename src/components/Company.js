@@ -62,7 +62,7 @@ const Company = () => {
               {stockData['country']}
             </div>
             <div id="company-sector">
-              {stockData['sector']}
+              {stockData['isEtf'] === true ? 'ETF' : stockData['sector']}
             </div>
             <div id="company-industry">
               {stockData['industry']}
@@ -98,13 +98,13 @@ const Company = () => {
             <div>
               <span>CEO</span>
               <span className="company-large">
-                {stockData['ceo']}
+                {stockData['isEtf'] === true ? 'N/A' : stockData['ceo']}
               </span>
             </div>
             <div>
               <span>EMPLOYEES</span>
               <span className="company-large">
-                {NumberConverter(stockData['fullTimeEmployees'], 0)}
+                {stockData['isEtf'] === true ? 'N/A' : NumberConverter(stockData['fullTimeEmployees'], 0)}
               </span>
             </div>
           </div>
