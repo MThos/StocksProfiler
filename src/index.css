@@ -1,5 +1,5 @@
 body {
-  background: rgba(0, 0, 0, 0.87);
+  background: rgba(0, 0, 0, 0.90);
   color: black;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Nanum Gothic Coding', 'Roboto',
@@ -20,8 +20,8 @@ a:active, a:visited {
 
 .App {
   background: white;
-  border-left: 6px solid rgba(0, 0, 0, 0.1);
-  border-right: 6px solid rgba(0, 0, 0, 0.1);
+  border-left: 4px solid rgba(0, 0, 0, 0.1);
+  border-right: 4px solid rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   font-family: 'Nanum Gothic Coding', Tahoma, sans-serif;
@@ -173,6 +173,13 @@ a:active, a:visited {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+#chart-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+  margin: 30px auto 20px auto;
 }
 
 #chart-symbol {
@@ -381,7 +388,7 @@ a:active, a:visited {
 }
 
 #daily-chart {
-  margin: 50px 135px 25px auto;
+  margin: 50px 155px 25px auto;
 }
 
 #details {
@@ -523,29 +530,6 @@ a:active, a:visited {
   }
 }
 
-.financial-button button {
-  color: black;
-  cursor: pointer;
-  font-size: 1.2rem;
-  font-weight: 600;
-  padding: 10px 15px;
-  text-transform: capitalize;
-}
-
-.financial-button button:hover {
-  color: mediumslateblue;
-}
-
-.financial-button button:active {
-  color: mediumslateblue;
-}
-
-.financial-button-active {
-  background: rgb(0, 0, 0, 0.9) !important;
-  border-radius: 5px;
-  color: white !important;
-}
-
 .financial-datestamp {
   color: mediumseagreen;
   font-size: 2.5rem;
@@ -612,7 +596,7 @@ footer ul {
 
 header {
   align-items: center;
-  background: black;
+  background: mediumslateblue;
   display: flex;
   justify-content: space-between;
   padding: 10px;
@@ -752,7 +736,11 @@ header {
 }
 
 #navbar a:hover {
-  font-weight: 600;
+  border: 2px solid black;
+  border-radius: 5px;
+  background: rgb(175, 160, 255);
+  color: white;
+  padding: 8px;
 }
 
 #navbar a:active {
@@ -761,7 +749,7 @@ header {
 
 .nav-active {
   background: mediumslateblue !important;
-  border: 2px solid mediumslateblue;
+  border: 2px solid black;
   border-radius: 5px;
   color: white !important;
   font-weight: 600;
@@ -874,6 +862,33 @@ header {
   padding-right: 30px;
 }
 
+.option-button button {
+  border: 2px solid black;
+  border-radius: 10px;
+  background: black;
+  color: white;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 15px;
+  text-transform: capitalize;
+}
+
+.option-button button:hover {
+  background: rgb(175, 160, 255);
+  color: white;
+}
+
+.option-button button:active {
+  color: mediumslateblue;
+}
+
+.option-button-active {
+  background: mediumslateblue !important;
+  border-radius: 5px;
+  color: white !important;
+}
+
 .red {
   color: red !important;
 }
@@ -897,6 +912,7 @@ section {
 #ticker {
   background: rgba(255, 255, 255, 0.1);
   padding: 11px 0 10px 70px;
+  white-space: nowrap;
 }
 
 .ticker-percent {
