@@ -48,10 +48,11 @@ const Details = () => {
     )
   }
 
-  if ((profileData && quoteData && keyMetricData && cashData) &&
+  if ((profileData && quoteData && keyMetricData && incomeData && cashData) &&
       Object.keys(profileData).length > 0 && 
       Object.keys(quoteData).length > 0 && 
       Object.keys(keyMetricData).length > 0 &&
+      Object.keys(incomeData).length > 0 &&
       Object.keys(cashData).length > 0) {
     return (
       <section className="fade-in">
